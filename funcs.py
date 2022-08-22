@@ -195,6 +195,6 @@ def LM(ini_chords_str, L_model, device):
     for i in range(32):
         y = L_model(s_mov)
         s_mov = torch.cat([s, torch.where(y<0.4, 0, 1)[:,:,s.size(-1)-1:]], axis=2).float().to(device)
-    print(torch.where(s_mov<0.4, 0, 1).int().to('cpu').detach().numpy()[0])
+    # print(torch.where(s_mov<0.4, 0, 1).int().to('cpu').detach().numpy()[0])
 
     return torch.where(s_mov<0.4, 0, 1).int().to('cpu').detach().numpy()[0]
