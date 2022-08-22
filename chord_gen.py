@@ -46,10 +46,11 @@ def generate_chord(init_chords: list) -> list:
         chord_str = chord.root + str(chord.quality)    # trans into str like 'Em7'
         chord_strs.append(chord_str)    # for display
 
+    
+    norm_chords = [Chord(c) for c in chord_strs]
+
+    # create midi files in given directory
+    pretty_midi.create_midi(onchords, 'tmp/chord6o.mid')    # 転回系
+    pretty_midi.create_midi(norm_chords, 'tmp/chord6n.mid')    # 名前通り
+
     return chord_strs
-
-#norm_chords = [Chord(c) for c in chord_strs]
-
-# create midi files in given directory
-#create_midi(onchords, 'chord6o.mid')    # 転回系
-#create_midi(norm_chords, 'chord6n.mid')    # 名前通り
