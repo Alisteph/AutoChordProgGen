@@ -21,34 +21,35 @@ from pychord import Chord, find_chords_from_notes
 from funcs import *
 
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-d_lang = {"input_dim":12, "hidden_dim":128, "target_dim":12, "num_layers":5}   # クロマベクトルdim12
-model = GRU_LM(**d_lang)
-model.to(device)
-l_weight= par_load('data/LM1.8.pth')
-new_params = l_weight
-model.load_state_dict(new_params)
+def generate_chord(init_chords: list) -> list:
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    d_lang = {"input_dim":12, "hidden_dim":128, "target_dim":12, "num_layers":5}   # クロマベクトルdim12
+    model = GRU_LM(**d_lang)
+    model.to(device)
+    l_weight= par_load('data/LM1.8.pth')
+    new_params = l_weight
+    model.load_state_dict(new_params)
 
-ini_chords = ['F', 'G', 'Esus4', 'Am']    # USER GIVEN
+    #ini_chords = ['F', 'G', 'Esus4', 'Am']    # USER GIVEN
 
-cvs = LM(ini_chords, model, device)
+    cvs = LM(init_chords, model, device)
 
-onchords = []
-chord_strs = []
-for i in range(cvs.shape[-1]):
-    chord = cv2c(cvs[:,i])    # returns list of possible chordname like [<Chord: Em7/D>, <Chord: G6/D>]
-    if len(chord) == 0:
-        break
-    else:
-        chord = chord[0]
-        onchords.append(chord)    # for midi
-    chord_str = chord.root + str(chord.quality)    # trans into str like 'Em7'
-    chord_strs.append(chord_str)    # for display
+    onchords = []
+    chord_strs = []
+    for i in range(cvs.shape[-1]):
+        chord = cv2c(cvs[:,i])    # returns list of possible chordname like [<Chord: Em7/D>, <Chord: G6/D>]
+        if len(chord) == 0:
+            break
+        else:
+            chord = chord[0]
+            onchords.append(chord)    # for midi
+        chord_str = chord.root + str(chord.quality)    # trans into str like 'Em7'
+        chord_strs.append(chord_str)    # for display
 
-print(chord_strs)    # OUTPUT
+    return chord_strs
 
-norm_chords = [Chord(c) for c in chord_strs]
+#norm_chords = [Chord(c) for c in chord_strs]
 
 # create midi files in given directory
-create_midi(onchords, 'chord6o.mid')    # 転回系
-create_midi(norm_chords, 'chord6n.mid')    # 名前通り
+#create_midi(onchords, 'chord6o.mid')    # 転回系
+#create_midi(norm_chords, 'chord6n.mid')    # 名前通り
