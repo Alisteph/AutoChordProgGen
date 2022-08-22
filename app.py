@@ -12,7 +12,13 @@ if exec_generate:
     output_chord = chord_gen.generate_chord(init_chords.split())
 
     output = st.text(''.join(output_chord))
-    st.download_button(
-        'download',
-        open('tmp/chord6o.mid', 'br')
+    button_downloado = st.download_button(
+        'download onchord',
+        open('tmp/chord6o.mid', 'br'),
+        'chord6o.mid'
+    )
+    button_downloadn = st.download_button(
+        'download norm',
+        open('tmp/chord6n.mid', 'br'),
+        'chord6n.mid'
     )
