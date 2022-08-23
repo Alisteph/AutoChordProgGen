@@ -5,6 +5,7 @@ description1 = \
     - 'initial chords' requires more than 0 codes (ex. 'F G Am7 Esus4')
     - 'number of chords' requires integer < 50
     - You can get a __different chord progression each time__ you execute it
+    - Generating may take some time
     - MIDI download function is in progress...    
     """
 
