@@ -15,13 +15,15 @@ if exec_generate:
         output_chord = output_chord[:int(num_chords)]
 
     output = st.text(' '.join(output_chord))
-    button_downloado = st.download_button(
-        'download onchord',
-        open('tmp/on_chord.mid', 'br'),
-        'on_chord.mid'
-    )
-    button_downloadn = st.download_button(
-        'download normal chord',
-        open('tmp/chord.mid', 'br'),
-        'chord.mid'
-    )
+
+    st.write('MIDI download function is in progress...')
+    # button_downloado = st.download_button(
+    #     'download onchord',
+    #     open('tmp/on_chord.mid', 'br'),
+    #     'on_chord.mid'
+    # )
+    # button_downloadn = st.download_button(
+    #     'download normal chord',
+    #     open('tmp/chord.mid', 'br'),
+    #     'chord.mid'
+    # )
