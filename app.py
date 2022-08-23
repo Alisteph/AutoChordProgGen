@@ -7,7 +7,7 @@ st.title('AutoChordProgressGenerater')
 
 
 init_chords = st.text_input("initial chords")
-num_chords = st.text_input("number of chords")
+num_chords = st.text_input("number of output chords")
 exec_generate = st.button('exec')
 
 
