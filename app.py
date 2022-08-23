@@ -23,15 +23,15 @@ if exec_generate:
 
         st.code(' '.join(output_chord))
 
-    button_downloado = st.download_button(
-        'download onchord',
-        open('on_chord.mid', 'br'),
-        'on_chord.mid'
-    )
-    button_downloadn = st.download_button(
-        'download normal chord',
-        open('chord.mid', 'br'),
-        'chord.mid'
-    )
+    # button_downloado = st.download_button(
+    #     'download onchord',
+    #     open('on_chord.mid', 'br'),
+    #     'on_chord.mid'
+    # )
+    # button_downloadn = st.download_button(
+    #     'download normal chord',
+    #     open('chord.mid', 'br'),
+    #     'chord.mid'
+    # )
 
 st.markdown(dtx.description1)

@@ -50,7 +50,7 @@ def generate_chord(init_chords: list) -> list:
     norm_chords = [Chord(c) for c in chord_strs]
 
     # create midi files in given directory
-    create_midi(onchords, 'on_chord.mid')    # 転回系
-    create_midi(norm_chords, 'chord.mid')    # 名前通り
+    # create_midi(onchords, 'on_chord.mid')    # 転回系
+    # create_midi(norm_chords, 'chord.mid')    # 名前通り
 
     return chord_strs
