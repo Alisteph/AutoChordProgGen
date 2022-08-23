@@ -2,3 +2,4 @@
 __pycache__/funcs.cpython-310.pyc
 *.pyc
 *.mid
+env/*
