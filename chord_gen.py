@@ -26,7 +26,7 @@ def generate_chord(init_chords: list) -> list:
     d_lang = {"input_dim":12, "hidden_dim":128, "target_dim":12, "num_layers":5}   # クロマベクトルdim12
     model = GRU_LM(**d_lang)
     model.to(device)
-    l_weight= par_load('data/LM1.8.pth')
+    l_weight= par_load('data/LM1.9.pth')
     new_params = l_weight
     model.load_state_dict(new_params)
 
@@ -50,7 +50,7 @@ def generate_chord(init_chords: list) -> list:
     norm_chords = [Chord(c) for c in chord_strs]
 
     # create midi files in given directory
-    create_midi(onchords, 'tmp/chord6o.mid')    # 転回系
-    create_midi(norm_chords, 'tmp/chord6n.mid')    # 名前通り
+    create_midi(onchords, 'tmp/on_chord.mid')    # 転回系
+    create_midi(norm_chords, 'tmp/chord.mid')    # 名前通り
 
     return chord_strs

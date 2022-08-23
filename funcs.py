@@ -181,6 +181,10 @@ def gumbel_sigmoid(phi):
 
 
 def LM(ini_chords_str, L_model, device):
+    '''
+        length of chord prog <= num_chords_max
+    '''
+    num_chords_max = 50
 
     ini_chords = [Chord(c) for c in ini_chords_str]
     ini_chromas = [c2cv(c) for c in ini_chords]
@@ -192,7 +196,7 @@ def LM(ini_chords_str, L_model, device):
     s_mov = s
 
     np.set_printoptions(threshold=np.inf, linewidth=np.inf)
-    for i in range(32):
+    for i in range(num_chords_max):
         y = L_model(s_mov)
         s_mov = torch.cat([s, torch.where(y<0.4, 0, 1)[:,:,s.size(-1)-1:]], axis=2).float().to(device)
     # print(torch.where(s_mov<0.4, 0, 1).int().to('cpu').detach().numpy()[0])
