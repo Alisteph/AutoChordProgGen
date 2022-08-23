@@ -3,7 +3,7 @@ altair==4.2.0
 asttokens==2.0.5
 attrs==22.1.0
 backcall==0.2.0
-# bdds==1.0.1
+bdds==1.0.1
 bdpy==0.17.1
 black==22.1.0
 blinker==1.5
