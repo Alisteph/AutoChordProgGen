@@ -10,6 +10,7 @@ blinker==1.5
 cachetools==5.2.0
 certifi==2021.10.8
 charset-normalizer==2.0.11
+click==7.0.1
 colorama==0.4.4
 commonmark==0.9.1
 debugpy==1.5.1
@@ -110,4 +111,3 @@ widgetsnbextension==4.0.2
 xgboost==0.90
 yaspin==2.1.0
 zipp==3.8.1
-click==8.0.4
